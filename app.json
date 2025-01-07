@@ -6,16 +6,19 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.khaireact.commerce"
+      
     },
     "web": {
       "bundler": "metro",
@@ -32,10 +35,25 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+       
+      ],
+      ["expo-build-properties", {
+        "android": {
+          "enablePngCrunchInReleaseBuilds": false
+        }
+      }]
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "a59f265c-7441-47bd-a46d-01ce8c2bd3b8"
+      }
+    },
+    "owner": "khaireact"
   }
 }
