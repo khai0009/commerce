@@ -1,16 +1,10 @@
-import {SafeAreaView,useWindowDimensions } from 'react-native';
-import Toplayput from '../../product/top';
-import List from '../../product/list';
+import { NavigationContainer } from '@react-navigation/native';
+import Screen from '../../Home/screen';
 
 export default function HomeScreen() {
-  const windowHeight = useWindowDimensions().height;
-
   return (
-    <SafeAreaView style={[{ minHeight: Math.round(windowHeight),backgroundColor: 'white' }]}>
-      <Toplayput></Toplayput>
-      <List></List>
-    </SafeAreaView>
+
+      <Screen />
+
   );
 }
-
-  

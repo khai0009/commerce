@@ -1,7 +1,7 @@
 import { StyleSheet,View, TextInput, ImageBackground } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 
-const Toplayput = () => {
+const Toplayout = () => {
 
 
   return (
@@ -58,4 +58,4 @@ const Top = StyleSheet.create({
 
   }
 });
-export default Toplayput
+export default Toplayout

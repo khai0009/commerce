@@ -55,7 +55,7 @@ const List = () => {
       <View style={styles.container}>
 
         <FlatList
-
+       
           data={Users}
           renderItem={renderItem}
           numColumns={2}
