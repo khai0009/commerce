@@ -1,61 +1,63 @@
-import { StyleSheet,View, TextInput, ImageBackground } from 'react-native';
-import Feather from '@expo/vector-icons/Feather';
+import Feather from "@expo/vector-icons/Feather";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { View,Image,Text,StyleSheet } from "react-native";
+import { RootStackParamList } from "./type";
 
-const Toplayout = () => {
-
-
-  return (
-
-      <ImageBackground source={require('../assets/images/backgroundtop.png')} style={Top.menu}>
-        <View style={Top.searchp}>
-          
-        <Feather name="search" size={20} color="black" style={Top.iconsearch}/> 
-          <TextInput maxLength={40} style={Top.search} placeholder='Tìm kiếm sản phẩm của bạn!'>
-            
-          </TextInput>
-        </View>
-      
-      </ImageBackground>
- 
-  );
-}
-const index = StyleSheet.create({
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'ProductListScreen'>;
+const Top= (): React.JSX.Element=>{
   
-})
-const Top = StyleSheet.create({
-  menu: {
-    height: 120,
-    width: "100%",
-    backgroundColor: 'lightblue',
-    backgroundImage: `url(${require("../assets/images/backgroundtop.png")})`
+    const navigation = useNavigation<NavigationProp>();
+    return ( <View style={top.menu}>
+      
+      <View style={top.searchp}>
+      
+      <View style={{width:'auto',flexDirection: 'row',marginLeft: 140,marginRight: 75 }}>
+      <Image source={require("@/assets/images/cafexanhlogo.png")} style={{ width: 27, height: 27,marginTop: 7 }} ></Image>
+      <Text style={{color: 'green',fontFamily: 'Pacifico',fontSize: 25}}>Xanh Cafe</Text>
+      </View>
+     
+      <Feather name="search" size={25} color="black" onPress={()=>navigation.navigate('SearchScreen')} style={top.iconsearch}/> 
+        
+      </View>
     
-  },
-  searchp: {
-    width: '100%',
-    marginTop: '17%',
-    flex: 1,
-    margin: 'auto',
-    flexDirection: 'row',
-    alignItems: 'center'
-    
-  },
-  iconsearch: {
-    paddingVertical:10,
-    paddingLeft: 5,
-    height: 42,
-    
-    backgroundColor: "white",
-    borderTopLeftRadius: 15,
-    borderBottomLeftRadius: 15,
-  },
-  search: {
-    fontSize: 16,
-    borderTopRightRadius: 15,
-    borderBottomRightRadius: 15,
-    height: 'auto',
-    backgroundColor: "white",
-    width: "80%"
-
+    </View>)
   }
-});
-export default Toplayout
+  const top = StyleSheet.create({
+    menu: {
+      height:66,
+      width: "100%",
+      backgroundColor: 'white',
+      borderBottomWidth: 0.75
+      
+    },
+    searchp: {
+      marginTop: 20,
+      width: '100%',
+      height: 'auto',
+      flex: 1,
+    
+      flexDirection: 'row',
+      justifyContent: 'center'
+  
+      
+    },
+    iconsearch: {
+  
+      marginRight: 45, 
+      marginTop: 10
+  
+    },
+    search: {
+      borderWidth: 0.5,
+      borderLeftWidth: 0,
+      fontSize: 20,
+      borderTopRightRadius: 15,
+      borderBottomRightRadius: 15,
+      height: 'auto',
+      backgroundColor: "white",
+      width: "80%"
+  
+    }
+  });
+  export default Top

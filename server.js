@@ -27,9 +27,9 @@ connection.connect(err => {
     console.log('Connected to MySQL database!');
 });
 
-// API: Lấy danh sách dữ liệu từ bảng `users`
+
 app.get('/trasua', (req, res) => {
-    const query = 'SELECT * FROM trasua'; // Thay `users` bằng tên bảng của bạn
+    const query = 'SELECT * FROM trasua';
     connection.query(query, (err, results) => {
         if (err) {
             return res.status(500).send(err.message);
@@ -38,7 +38,7 @@ app.get('/trasua', (req, res) => {
     });
 });
 
-// API: Thêm dữ liệu vào bảng `users`
+
 app.post('/trasua', (req, res) => {
     const { name, email } = req.body;
     if (!name || !email) {
@@ -53,7 +53,7 @@ app.post('/trasua', (req, res) => {
     });
 });
 
-// API: Xóa dữ liệu từ bảng `users`
+
 app.delete('/users/:id', (req, res) => {
     const { id } = req.params;
     const query = 'DELETE FROM users WHERE id = ?';
@@ -67,6 +67,6 @@ app.delete('/users/:id', (req, res) => {
 
 // Chạy server
 const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(PORT,'0.0.0.0', () => {
+    console.log(`Server is running on http://0.0.0.0:${PORT}`);
 });

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet, useColorScheme, Platform, Alert, ScrollView } from 'react-native';
+import {FlatList, StyleSheet, useColorScheme, Alert, SafeAreaView } from 'react-native';
 import ProductItem from './product';
 import axios from 'axios';
+import Config from 'react-native-config';
 
 
 const List = () => {
     const [Users,setUsers] = useState<Product[]>();
-        const API_URL = 'http://192.168.1.16:3000/trasua'; // Thay <YOUR_SERVER_IP> bằng IP máy chạy API (vd: 192.168.1.5)
+        const API_URL = 'http://192.168.1.16:3000'+'/trasua'; // Thay <YOUR_SERVER_IP> bằng IP máy chạy API (vd: 192.168.1.5)
       
         useEffect(() => {
           fetchUsers();
@@ -38,24 +39,21 @@ const List = () => {
     const styles = StyleSheet.create({
       container: {
         flex: 1,
-        padding: 10,
+        paddingTop: 5,
+        paddingHorizontal: 5,
         backgroundColor: isDarkTheme
         ? 'black'
         : 'white'
   
       },
-      list: {
-        width: '100%',
-      
-        flexDirection: 'row'
-      }
   })
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
 
         <FlatList
-       
+          
+          contentContainerStyle={{ flexGrow: 1 }}
           data={Users}
           renderItem={renderItem}
           numColumns={2}
@@ -63,7 +61,7 @@ const List = () => {
            // Điều chỉnh kích thước item
     />
 
-      </View>
+      </SafeAreaView>
     );
 
 }
